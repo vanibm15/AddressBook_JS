@@ -120,20 +120,16 @@ function editContact(firstName, lastName, property, newValue) {
     if (contactExists(firstName, lastName)) {
         switch (property) {
             case "address":
-                addressBookArray.find((contact) => 
-                contact.firstName == firstName).address = newValue;
+                addressBookArray.find((contact) => contact.firstName == firstName).address = newValue;
                 break;
             case "city":
-                addressBookArray.find((contact) =>
-                contact.firstName == firstName).city = newValue;
+                addressBookArray.find((contact) => contact.firstName == firstName).city = newValue;
                 break;
             case "state":
-                addressBookArray.find((contact) => 
-                contact.firstName == firstName).state = newValue;
+                addressBookArray.find((contact) => contact.firstName == firstName).state = newValue;
                 break;
             case "zip":
-                addressBookArray.find((contact) =>
-                 contact.firstName == firstName).zip = newValue;
+                addressBookArray.find((contact) => contact.firstName == firstName).zip = newValue;
                 break;
             case "phoneNumber":
                 addressBookArray.find((contact) => contact.firstName == firstName).phoneNumber = newValue;
@@ -148,20 +144,32 @@ function editContact(firstName, lastName, property, newValue) {
         console.log("Contact Does Not Exist");
     }
 }
+
+function deleteContact(firstName, lastName) {
+    if (contactExists(firstName, lastName)) {
+        addressBookArray = addressBookArray.filter((contact) => contact.firstName != firstName && contact.lastName != lastName);
+        console.log(firstName + " " + lastName + "  Contact Deleted");
+    } else {
+        console.log("Contact Does Not Exist");
+    }
+}
+
 try {
-    addressBookArray.push(new Contact("varsha", "Manavachri", "Rajajinagr", "Bangalore", "Karnataka", 560001, "91 1276543210", "varsha@gmail.com"));
+    addressBookArray.push(new Contact("Vani", "Bman", "balajiNagar", "Banglore", "Karnatka", 580016, "91 1254567890","vani@gmail.com"));
 } catch (e) {
     console.error(e);
 }
 
 try {
-    addressBookArray.push(new Contact("Raju", "Sharma","RTnagar", "Bangalore", "Karnataka", 560039, "91 9874563210", "arc@gmail.com"));
+    addressBookArray.push(new Contact("Raju", "Sharma","NarendraNagar", "Pune", 'Maharatra', 585588, "91 7654561230", "raj@gmail.com"));
 } catch (e) {
     console.log(e);
 }
-console.log(addressBookArray);
 console.log("\nAfter Editing Contact")
 editContact("Raju", "Sharma", "city", "Mumbai");
 editContact("Raju", "Sharma", "state", "Maharashtra");
 editContact("Raju", "Sharma", "address", "Juhu");
+console.log(addressBookArray);
+
+deleteContact("Raju", "Sharma");
 console.log(addressBookArray);
