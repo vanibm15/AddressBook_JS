@@ -191,7 +191,7 @@ try {
 }
 
 try {
-    addressBookArray.push(new Contact("vani", "bm","Asbchd", "banglore", 'karnataka', 456789, '91 1234567890', "abc@gmail.com"));
+    addressBookArray.push(new Contact("vani", "bm","Asbchd", "banglore", "karnataka", 456789, '91 1234567890', "abc@gmail.com"));
 } catch (e) {
     console.log(e);
 }
