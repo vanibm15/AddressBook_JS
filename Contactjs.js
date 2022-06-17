@@ -154,22 +154,46 @@ function deleteContact(firstName, lastName) {
     }
 }
 
+function countContacts(contactArray){
+    let count= contactArray.reduce((a, b) => a.concat(b), []).length;
+    console.log("Number of contacts is: "+count);
+ }
+
+ function addContact(addressBookArray,firstName,lastName){
+    if(addressBookArray.find((contact)=>(contact.firstName+" "+contact.lastName)==(firstName+" "+lastName))){   
+        console.log("Given contact already present in addressbook.");
+    }
+    else{
+        try{
+            addressBookArray.push(new Contact(firstName,lastName,'RTNagar','Bangalore','Karnataka',560002,'91 8521036987','sehwag@gmail.com'));
+            
+            console.log("Contact is added. ");
+        }catch(Exception){
+            console.log(Exception);
+        }
+        
+    }
+}
 try {
-    addressBookArray.push(new Contact("Vani", "Bman", "balajiNagar", "Banglore", "Karnatka", 580016, "91 1254567890","vani@gmail.com"));
+    addressBookArray.push(new Contact("Sachin", "Tendulkar", "Jayanagar", "Bangalore", "Karnataka", 560001, "91 9876543210", "sachin@gmail.com"));
 } catch (e) {
     console.error(e);
 }
 
 try {
-    addressBookArray.push(new Contact("Raju", "Sharma","NarendraNagar", "Pune", 'Maharatra', 585588, "91 7654561230", "raj@gmail.com"));
+    addressBookArray.push(new Contact("vani", "bm","Bardi", "banglore", 'karnataka', 123556, '91 1234567890', "abc@gmail.com"));
 } catch (e) {
     console.log(e);
 }
+console.log(addressBookArray);
 console.log("\nAfter Editing Contact")
-editContact("Raju", "Sharma", "city", "Mumbai");
-editContact("Raju", "Sharma", "state", "Maharashtra");
-editContact("Raju", "Sharma", "address", "Juhu");
+editContact("Sachin", "Tendulkar", "city", "Mumbai");
+editContact("Sachin", "Tendulkar", "state", "Maharashtra");
+editContact("Sachin", "Tendulkar", "address", "Juhu");
 console.log(addressBookArray);
 
-deleteContact("Raju", "Sharma");
+deleteContact("Sachin", "Tendulkar");
+console.log(addressBookArray);
+countContacts(addressBookArray);
+addContact(addressBookArray,"Virender", "Sehwag");
 console.log(addressBookArray);
